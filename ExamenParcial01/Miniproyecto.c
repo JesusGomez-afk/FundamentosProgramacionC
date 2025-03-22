@@ -7,6 +7,7 @@ int main()
     int num1, num2;
     int factorial = 1;
     char password[10];
+    int cs = 0, cf = 0, cp = 0, cps = 0;
 
     enum opciones
     {
@@ -32,6 +33,11 @@ int main()
 
         if (opcion == SALIR)
         {
+            printf("Opciones     | Numero de veces Ingresadas  \n");
+            printf("SUMA         | %i\n",cs);
+            printf("FACTORIAL    | %i\n",cf);
+            printf("PROGRAMACION | %i\n",cp);
+            printf("PASSWORD     | %i\n",cps);
             puts("Saliendo del programa...");
             break;
         }
@@ -39,6 +45,7 @@ int main()
         switch (opcion)
         {
         case SUMA:
+            cs ++;
             system("cls");
             printf("Ingrese el primer numero: ");
             scanf("%i", &num1);
@@ -47,9 +54,21 @@ int main()
             printf("La suma de %i y %i es %i\n", num1, num2, num1 + num2);
             break;
         case FACTORIAL:
+            cf ++;
             system("cls");
             printf("Ingrese un numero: ");
             scanf("%i", &num1);
+            //Validar que el numero sea entero positivo
+            while(1){
+                if (num1 < 1) {
+                    puts("Numero no valido");
+                    printf("Ingrese un numero entero positivo: ");
+                    scanf("%i", &num1); 
+                    } else {
+                        break;
+                    }
+                }
+            //CALCULAR FACTORIAL
             for (int i = 1; i <= num1; i++)
             {
                 factorial *= i;
@@ -57,15 +76,29 @@ int main()
             printf("El factorial de %i es %i\n", num1, factorial);
             break;
         case PROGRAMACION:
+            cp++;
             system("cls");
             printf("Ingrese la cantidad de veces que desea repetir la palabra 'Programacion': ");
             scanf("%i", &num1);
+
+            //Validar que el numero sea entero positivo
+            while(1){
+                if (num1 < 1) {
+                    puts("Numero no valido");
+                    printf("Ingrese un numero entero positivo: ");
+                    scanf("%i", &num1); 
+                    } else {
+                        break;
+                    }
+                }
+
             for (int i = 0; i < num1; i++)
             {
                 printf("%i.Programacion\n", i + 1);
             }
             break;
         case PASSWORD:
+            cps ++;
             system("cls");
             printf("Ingrese la cantidad de caracteres en total que tiene su password: ");
             scanf("%i", &num1);
