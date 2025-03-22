@@ -6,12 +6,14 @@ int main()
     int opcion;
     int num1, num2;
     int factorial = 1;
+    char password[10];
+
     enum opciones
     {
         SUMA = 1,
         FACTORIAL = 2,
         PROGRAMACION = 3,
-        PROXIMAMENTE = 4,
+        PASSWORD = 4,
         SALIR = 0,
     };
 
@@ -21,7 +23,7 @@ int main()
         puts("1. Suma de dos numeros");
         puts("2. Factorial de un numero");
         puts("3. Repetir la palabra Programacion n cantidad de veces");
-        puts("4. Proximamente");
+        puts("4. Password");
         puts("0. Salir");
         puts("---------------------------------------------");
 
@@ -63,10 +65,29 @@ int main()
                 printf("%i.Programacion\n", i + 1);
             }
             break;
-        case PROXIMAMENTE:
+        case PASSWORD:
             system("cls");
-            puts("Proximamente...");
+            printf("Ingrese la cantidad de caracteres en total que tiene su password: ");
+            scanf("%i", &num1);
+
+            if (num1 > 10 || num1 < 1)
+            {
+                puts("El password debe de contener un minimo de 1 caracter y un maximo de 10");
+                break;
+            }
+
+            puts("Ingrese su password carcacter por caracter");
+            for (int i = 0; i < num1; i++)
+            {
+                printf("Caracter %d: ", i + 1);
+                scanf(" %c", &password[i]);
+                password[i] = password[i] + 3;
+            }
+
+            printf("Password Encriptada: %s \n", password);
+
             break;
+
         default:
             system("cls");
             printf("La Opcion %i no es valida\n", opcion);
